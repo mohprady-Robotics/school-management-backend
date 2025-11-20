@@ -1,6 +1,6 @@
-const Attendance = require('../models/Attendance');
-const Student = require('../models/Student');
-const { canModifyWithinTimeLimit } = require('../utils/permissions');
+const Attendance = require('../models/Attendance.js');
+const Student = require('../models/Student.js/index.js');
+const { canModifyWithinTimeLimit } = require('../utils/permissions.js/index.js');
 
 exports.markAttendance = async (req, res) => {
   try {

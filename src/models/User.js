@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 const bcrypt = require('bcryptjs');
-
 const User = sequelize.define('User', {
   id: {
     type: DataTypes.UUID,
@@ -27,6 +26,14 @@ const User = sequelize.define('User', {
     ),
     allowNull: false
   },
+  schoolId: {
+    type: DataTypes.UUID,
+    references: {
+      model: 'Schools',
+      key: 'id'
+    },
+    allowNull: false
+  },
   firstName: { type: DataTypes.STRING, allowNull: false },
   lastName: { type: DataTypes.STRING, allowNull: false },
   phoneNumber: DataTypes.STRING,
@@ -47,6 +54,9 @@ const User = sequelize.define('User', {
     }
   }
 });
+// Create association
+User.belongsTo(School, { foreignKey: 'schoolId' });
+School.hasMany(User, { foreignKey: 'schoolId' });
 
 User.prototype.comparePassword = async function(password) {
   return await bcrypt.compare(password, this.password);

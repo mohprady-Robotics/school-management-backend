@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
-const Teacher = require('./Teacher');
+const Teacher = require('./Teacher.js');
 
 const Assignment = sequelize.define('Assignment', {
   id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true },

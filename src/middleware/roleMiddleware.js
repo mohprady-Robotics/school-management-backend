@@ -1,4 +1,4 @@
-const { hasPermission } = require('../utils/permissions');
+const { hasPermission } = require('../utils/permissions.js');
 
 const authorize = (module, action) => {
   return (req, res, next) => {
